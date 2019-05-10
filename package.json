@@ -1,0 +1,31 @@
+{
+  "name": "haoxian_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "build": "gulp",
+    "dev": "gulp watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^2.0.0-alpha.20",
+    "babelify": "^9.0.0",
+    "browserify": "^16.2.3",
+    "gulp-babel": "^7.0.0",
+    "gulp-sass": "^4.0.2",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0",
+    "vueify": "^9.4.1",
+    "gulp": "^4.0.2",
+    "gulp-filter": "^5.1.0",
+    "gulp-nunjucks": "^4.0.0",
+    "gulp-rename": "^1.4.0"
+  },
+  "dependencies": {
+    "fastclick": "^1.0.6",
+    "vue": "^2.6.10"
+  }
+}

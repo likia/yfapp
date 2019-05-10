@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
+    <link rel="stylesheet" type="text/css" href="./css/index.css" />
+    <link rel="stylesheet" type="text/css" href="./css/scss/dist/style.css" />
+    <link rel="stylesheet" type="text/css" href="./css/scss/dist/page/index.css" />
+    <style type="text/css">
+    </style>
+</head>
+
+<body class="wrap">
+  <div id="view">
+      <header>
+        <!-- 头部标题栏 -->
+        <div class="arrow-back pull-left" v-show="canGoback">
+          <van-icon @click="goBack" name="arrow-left" style="font-size: .5rem;"></van-icon>
+        </div>
+        广西好鲜
+      </header>
+      <section>
+        <!-- 内容 -->
+      </section>
+      <footer>
+        <van-tabbar v-model="active" :style='{ "padding-bottom": footerPad + "px" }' v-model="active">
+          <van-tabbar-item @click="navTo('main.html')" icon="shop">首页</van-tabbar-item>
+          <van-tabbar-item @click="navTo('product/index.html')" icon="chat">好鲜</van-tabbar-item>
+          <van-tabbar-item @click="navTo('order/shopcar.html')" icon="records" info="5">发货</van-tabbar-item>
+          <van-tabbar-item @click="toMine" icon="gold-coin">我的</van-tabbar-item>
+        </van-tabbar>
+      </footer>
+    </div>
+</body>
+<script type="text/javascript" src="./script/vendor/vue.js"></script>
+<script src="./script/vendor/flexible.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript" src="./script/vendor/fastclick.min.js"></script>
+<script type="text/javascript" src="./script/vendor/vant.min.js"></script>
+<script type="text/javascript" src="./script/dist/index.js"></script>
+<script type="text/javascript">
+    if ('addEventListener' in document) {
+    	document.addEventListener('DOMContentLoaded', function() {
+    		FastClick.attach(document.body);
+    	}, false);
+    }
+
+    apiready = function() {
+
+      var fz = $api.dom('html').style['font-size'];
+
+      localStorage.setItem('fontSize', fz);
+
+        var vm = new Vue({
+          el: '#view',
+          data: {
+            footerPad: 0,
+            active: 0,
+            canGoback: false
+          },
+          created () {
+            log(util)
+          },
+          methods: {
+            /**
+             * 后退一页
+             */
+            goBack: function () {
+              api.historyBack();
+            },
+
+            toMine: function () {
+              var url = 'member/index.html'
+              var userInfo = $api.getStorage('userInfo')
+              log(userInfo)
+              if (!userInfo) {
+                this.active = 0;
+                api.openWin({
+                    name: 'login',
+                    animation:{type: 'none'},
+                    url: './html/login.html',
+                    pageParam: {}
+                });
+                return;
+              }
+              util.switchFrame(url)
+            },
+
+            /**
+             * 导航子页面
+             */
+            navTo: function (url) {
+              util.switchFrame(url)
+            }
+          }
+        })
+
+        var header = $api.dom('header'); // 获取 header 标签元素
+        var footer = $api.dom('footer'); // 获取 header 标签元素
+
+        // 1.修复开启沉浸式效果带来的顶部Header与手机状态栏重合的问题，最新api.js方法已支持适配iPhoneX；
+        // 2.默认已开启了沉浸式效果 config.xml中 <preference name="statusBarAppearance" value="true"/>
+        // 3.沉浸式效果适配支持iOS7+，Android4.4+以上版本
+        var headerH = $api.fixStatusBar(header);
+        var footerH = $api.fixTabBar(footer);
+
+        vm.footerPad = api.safeArea.bottom;
+
+        log(api.safeArea);
+        log(vm.footerPad);
+
+        // 保存frame区域
+        localStorage.setItem('headerH', headerH);
+        localStorage.setItem('footerH', footerH);
+
+        // 监听页面切换
+        api.addEventListener({
+            name: 'switchFrame'
+        }, function(ret, err) {
+            ret = ret.value;
+
+            var param = ret.data;
+            if (param) {
+              // 显示后退
+              if (param.back) {
+                vm.canGoback = true;
+              } else {
+                vm.canGoback = false;
+              }
+            }
+        });
+
+        window.util.switchFrame('main.html');
+    };
+</script>
+
+</html>

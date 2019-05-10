@@ -1,0 +1,28 @@
+html,
+body {
+  height: 100%; }
+
+header {
+  height: 1.2rem;
+  width: 100%;
+  text-align: center;
+  background-color: #eee;
+  color: #333;
+  line-height: 1.2rem;
+  font-size: .45rem; }
+
+footer {
+  height: 1.3rem;
+  position: fixed;
+  left: 0;
+  bottom: 0; }
+
+.arrow-back {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-left: 10px;
+  padding-top: 0.6rem;
+  height: 100%;
+  width: 200px;
+  text-align: left; }

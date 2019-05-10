@@ -1,0 +1,16 @@
+// 循环创建次数
+// 如: mg-5, mg-10, mg-15  3次
+$max-loop: 10;
+// 循环创建单次因数
+// 如: mg-5, mg-10   因数: 5
+$loop-factor: 5;
+// 常用字体
+$min-font-size: 12;
+$max-font-size: 32;
+// 常用颜色
+$red: #ff0000;
+$green: #377d22;
+$blue: #0000ff;
+$white: #fff;
+$grey: #aaa;
+$black: #333;

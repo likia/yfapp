@@ -1,0 +1,88 @@
+// 商品卡片
+.goods-item {
+      height:auto;
+      padding:.27rem;
+      border-bottom:1px solid #f1f1f1;
+      display: flex;
+
+    .goods-img {
+      width: 3.2rem;
+      height: 3.2rem;
+      margin-right: .27rem;
+    }
+
+    .goods-right{
+       flex:1;
+
+       .title {
+        font-size: .43rem;
+        overflow: hidden;
+        word-break: break-all;
+        margin-bottom: .11rem;
+        display: block
+      }
+       .subtitle{
+        font-size: .32rem;
+        overflow: hidden;
+        word-break: break-all;
+        display: block;
+        margin-bottom: .11rem;
+        color:#999;
+        line-height: 1.5;
+      }
+     .label{
+      background: #DBAA34;
+      padding:0 .11rem;
+      color:#fff;
+      font-size: .27rem;
+      font-weight: 600;
+      border-radius: 5px;
+      // ??
+      margin-right:.27rem;
+    }
+    .goods-bottom{
+      display: flex;
+      margin-top:.11rem;
+    }
+    .goods-bottom-left{
+      flex:1;
+
+      .price{
+        font-size: .53rem;
+        font-weight: bold;
+        display: block;
+        color:#000;
+        margin:0
+      }
+
+      // 建议零售价
+      .sales-price{
+        font-size: .32rem;
+        color:#F7532F;
+      }
+    }
+
+
+    .goods-bottom-right{
+      // width:130px;
+      // height:90px;
+      position: relative;
+
+      .add-order{
+         display: block;
+         position: absolute;
+        // background: url('widget://image/icon/addOrder.png');
+        // // background: red;
+        // background-size: 100% 100%;
+        // background-position: 50% 50%;
+
+        width:.8rem;
+        height:.8rem;
+        // margin-right:.13rem;
+        // margin-top:.27rem;
+        right: 0;
+        bottom: 0;
+      }
+    }
+  }
+}

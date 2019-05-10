@@ -1,0 +1,101 @@
+// 循环创建
+@mixin loop($name, $prop) {
+  // 5的倍数
+  @for $i from 0 through $max-loop {
+    .#{$name}#{$i * $loop-factor} {
+      #{$prop}: #{$i * $loop-factor}px;
+    }
+  }
+}
+
+.w1200 {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.with-padding {
+  padding: 15px !important;
+}
+
+.with-margin {
+  margin: 15px !important;
+}
+
+.center {
+  display: block;
+  text-align: center;
+}
+
+.no-padding {
+  padding: 0!important;
+}
+.no-margin {
+  margin: 0!important;
+}
+// 没边框
+.no-border {
+  border: 0;
+  border-radius: 0;
+}
+// 间距
+@include loop('m-', 'margin');
+// 内距
+@include loop('p-', 'padding');
+// 上下左右间距
+@include loop('mg-t-', 'margin-top');
+@include loop('mg-b-', 'margin-bottom');
+@include loop('mg-l-', 'margin-left');
+@include loop('mg-r-', 'margin-right');
+// 上下左右内距
+@include loop('pd-t-', 'padding-top');
+@include loop('pd-b-', 'padding-bottom');
+@include loop('pd-l-', 'padding-left');
+@include loop('pd-r-', 'padding-right');
+
+// 常用字体
+@for $i from $min-font-size through $max-font-size {
+  .font-#{$i} {
+    font-size: #{$i}px;
+  }
+}
+
+// 栅格
+@for $i from 1 through 12 {
+  .grid-#{$i} {
+    display: block;
+    float: left;
+    width: #{100% / 12 * $i};
+  }
+}
+
+
+.font-normal {
+  font-weight: normal !important;
+}
+.font-bold {
+  font-weight: bold;
+}
+
+// 文字布局
+.text-left {
+  text-align: left!important;
+}
+.text-center {
+  text-align: center!important;
+}
+.text-right {
+  text-align: right!important;
+}
+
+// Mixin itself
+@mixin clearfix() {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+.clearfix {
+  @include clearfix
+}

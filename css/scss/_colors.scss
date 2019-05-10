@@ -1,0 +1,30 @@
+// TODO: 生成多种颜色
+
+.red {
+  color: $red;
+}
+.green {
+  color: $green;
+}
+.grey {
+  color: $grey;
+}
+.white {
+  color: $white;
+}
+.black {
+  color: $black;
+}
+
+.font-white {
+  @extend .white
+}
+.font-grey {
+  @extend .grey
+}
+.font-red {
+  @extend .red
+}
+.font-black {
+  @extend .black;
+}

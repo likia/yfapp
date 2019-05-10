@@ -1,0 +1,7 @@
+<div>
+  <div>{% block header %}
+    header
+  {% endblock %}</div>
+  {% block main %}{% endblock %}
+  <div>footer</div>
+</div>

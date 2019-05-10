@@ -1,0 +1,77 @@
+@import "reset";
+@import "variables";
+@import "layout";
+@import "colors";
+
+body, html {
+  width: 100% !important;
+  height: 100% !important;
+  background: #fff;
+}
+
+img {
+  max-width: 100%;
+}
+
+.table {
+  border: 1px solid #eee;
+}
+.modal {
+  padding: 15px;
+}
+// 隐藏
+.hidden {
+  visibility: collapse;
+}
+
+// 暂无数据
+.no-data {
+  display: block;
+  font-size: 20px;
+  padding: 15px;
+}
+
+.text-overflow {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// 文字超出隐藏
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.line-gray {
+  height: 0;
+  border-bottom: 2px solid #dcdcdc;
+}
+.font-gray{
+  color:#999;
+}
+.lh18{
+  line-height: 18px;
+}
+.lh18{
+  line-height: 20px;
+}
+
+.notwrap {
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.font-blod{
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 5px
+}
